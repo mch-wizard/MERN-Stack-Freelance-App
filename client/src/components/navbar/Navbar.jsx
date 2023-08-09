@@ -37,7 +37,7 @@ const Navbar = () => {
             </Link>
             </div>
             <div className="links">
-            <span>App Business</span>
+            <span>XApp Business</span>
             <span>Explore</span>
             <span>English</span>
             {!currentUser?.isSeller && <span>Become a Seller</span>}
