@@ -7,12 +7,12 @@ import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from "../../components/projectCard/ProjectCard";
 import { cards, projects } from "../../data";
 
-function Home() {
+const Home = () => {
   return (
     <div className="home">
       <Featured />
       <TrustedBy />
-      <Slide slidesToShow={5} arrowsScroll={5}>
+      <Slide>
         {cards.map((card) => (
           <CatCard key={card.id} card={card} />
         ))}
@@ -184,7 +184,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <Slide slidesToShow={4} arrowsScroll={4}>
+      <Slide>
         {projects.map((card) => (
           <ProjectCard key={card.id} card={card} />
         ))}
