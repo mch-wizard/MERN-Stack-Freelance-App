@@ -32,9 +32,9 @@ const Navbar = () => {
         <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
         <div className="container">
             <div className="logo">
-            <Link className="link" to="/">
-                <span className="text">FreelanceApp</span>
-            </Link>
+                <Link className="link" to="/">
+                    <span className="text">FreelanceApp</span>
+                </Link>
             </div>
             <div className="links">
             <span>XApp Business</span>
@@ -44,7 +44,7 @@ const Navbar = () => {
             {currentUser ? (
                 <div className="user" onClick={()=>setOpen(!open)}>
                 <img
-                    src="./img/logo-mch.jpg"
+                    src="/img/logo-mch.jpg"
                     alt=""
                 />
                 <span>{currentUser?.username}</span>
@@ -119,4 +119,4 @@ const Navbar = () => {
     );
 }
 
-export default Navbar
+export default Navbar;
