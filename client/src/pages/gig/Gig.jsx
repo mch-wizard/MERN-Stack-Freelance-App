@@ -1,8 +1,26 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import "./Gig.scss";
-// import { Swiper } from 'swiper/react';
+import { useRef, useEffect } from 'react';
+import { register } from 'swiper/element/bundle';
+
+register();
 
 const Gig = () => {
+  const swiperElRef = useRef(null);
+
+  useEffect(() => {
+    // listen for Swiper events using addEventListener
+    swiperElRef.current.addEventListener('progress', (e) => {
+      const [swiper, progress] = e.detail;
+      console.log(progress);
+    });
+
+    swiperElRef.current.addEventListener('slidechange', (e) => {
+      console.log('slide changed');
+    });
+  }, []);
+
   return (
     <div className="gig">
       <div className="container">
@@ -25,20 +43,32 @@ const Gig = () => {
               <span>5</span>
             </div>
           </div>
-          {/* add Swiper  */}
           <div className="slider">
-            <img
-              src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <img
-              src="https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
-            <img
-              src="https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt=""
-            />
+            <swiper-container
+              ref={swiperElRef}
+              slides-per-view="1"
+              navigation="true"
+              pagination="true"
+            >
+              <swiper-slide>
+                <img
+                  src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                  alt=""
+                />
+              </swiper-slide>
+              <swiper-slide>
+                <img
+                  src="https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                  alt=""
+                />
+              </swiper-slide>
+              <swiper-slide>
+                <img
+                  src="https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                  alt=""
+                />
+              </swiper-slide>
+            </swiper-container>
           </div>
           <h2>About This Gig</h2>
           <p>
