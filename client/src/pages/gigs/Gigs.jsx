@@ -19,14 +19,14 @@ const Gigs = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["gigs"],
     queryFn: () =>
-    newRequest
-    .get(
-      `/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
-    )
-    .then((res) => {
-      return res.data;
-    }),
-  })
+      newRequest
+        .get(
+          `/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
+        )
+        .then((res) => {
+          return res.data;
+        }),
+  });
 
   const reSort = (type) => {
     setSort(type);
@@ -44,7 +44,7 @@ const Gigs = () => {
   return (
     <div className="gigs">
       <div className="container">
-        <span className="breadcrumbs">XApp {">"} Graphics & Design {">"}</span>
+        <span className="breadcrumbs">XApp {">"} Category {">"}</span>
         <h1>AI Artists</h1>
         <p>
           Explore the boundaries of art and technology with XApp's AI artists

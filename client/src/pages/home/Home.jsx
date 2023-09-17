@@ -2,7 +2,7 @@
 import "./Home.scss";
 import Featured from "../../components/featured/Featured";
 import TrustedBy from "../../components/trustedBy/TrustedBy";
-import Slide from "../../components/slide/Slide";
+import { Swiper, SwiperSlide } from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from "../../components/projectCard/ProjectCard";
 import { cards, projects } from "../../data";
@@ -12,14 +12,22 @@ const Home = () => {
     <div className="home">
       <Featured />
       <TrustedBy />
-      <Slide>
-        {cards.map((card) => (
-          <swiper-slide key={card.id}>
-            <CatCard key={card.id} card={card} />
-          </swiper-slide>
-          
-        ))}
-      </Slide>
+      <div className="slider-section">
+        <Swiper
+          slidesPerView={3}
+          breakpoints={{ 768: { slidesPerView: 4 } }}
+          on={{
+            slideChange: () => console.log('slide changed'),
+            progress: (s, progress) => console.log(`progress is ${progress}`),
+          }}
+        >
+          {cards.map((card) => (
+            <SwiperSlide key={card.id}>
+              <CatCard key={card.id} card={card} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
       <div className="features">
         <div className="container">
           <div className="item">
@@ -187,13 +195,22 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Slide>
-        {projects.map((card) => (
-          <swiper-slide key={card.id}>
-            <ProjectCard key={card.id} card={card} />
-          </swiper-slide>
-        ))}
-      </Slide>
+      <div className="slider-section">
+        <Swiper
+          slidesPerView={3}
+          breakpoints={{ 768: { slidesPerView: 4 } }}
+          on={{
+            slideChange: () => console.log('slide changed'),
+            progress: (s, progress) => console.log(`progress is ${progress}`),
+          }}
+        >
+          {projects.map((card) => (
+            <SwiperSlide key={card.id}>
+              <ProjectCard key={card.id} card={card} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 }

@@ -41,7 +41,7 @@
       }
   
       .container {
-        width: 1400px;
+        width: 90%;
         display: flex;
         align-items: center;
         gap: 200px;
@@ -97,6 +97,10 @@
       //     }
       //   }
     }
+
+    .slider-section {
+      padding: 100px 0px;
+    }
   
     .explore {
       display: flex;
@@ -104,7 +108,7 @@
       padding: 100px 0px;
   
       .container {
-        width: 1400px;
+        width: 90%;
   
         h1{
           color: #555;

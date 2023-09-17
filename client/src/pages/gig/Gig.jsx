@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { useParams } from "react-router-dom";
 import Reviews from "../../components/reviews/Reviews"
+import { Swiper, SwiperSlide } from "../../components/slide/Slide";
 
 register();
 
@@ -45,7 +46,7 @@ const Gig = () => {
         <div className="container">
           <div className="left">
             <span className="breadcrumbs">
-              Fiverr {">"} Graphics & Design {">"}
+              XApp {">"} {data.cat} {">"}
             </span>
             <h1>{data.title}</h1>
             {isLoadingUser ? (
@@ -72,11 +73,22 @@ const Gig = () => {
                 )}
               </div>
             )}
-            {/* <Slider slidesToShow={1} arrowsScroll={1} className="slider">
+              <Swiper
+                className="slider"
+                slidesPerView={1}
+                breakpoints={{ 768: { slidesPerView: 1 } }}
+                on={{
+                  slideChange: () => console.log('slide changed'),
+                  progress: (s, progress) => console.log(`progress is ${progress}`),
+                }}
+              >
               {data.images.map((img) => (
-                <img key={img} src={img} alt="" />
+                <SwiperSlide key={img}>
+                  <img key={img} src={img} alt="" />
+                </SwiperSlide>
+                
               ))}
-            </Slider> */}
+            </Swiper>
             <h2>About This Gig</h2>
             <p>{data.desc}</p>
             {isLoadingUser ? (
@@ -138,7 +150,7 @@ const Gig = () => {
           <div className="right">
             <div className="price">
               <h3>{data.shortTitle}</h3>
-              <h2>$ {data.price}</h2>
+              <h2>${data.price}</h2>
             </div>
             <p>{data.shortDesc}</p>
             <div className="details">
@@ -158,7 +170,8 @@ const Gig = () => {
                   <span>{feature}</span>
                 </div>
               ))}
-            </div>
+              </div>
+              <button>Continue</button>
           </div>
         </div>
       )}
