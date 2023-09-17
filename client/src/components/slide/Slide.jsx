@@ -1,40 +1,52 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import "./Slide.scss";
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { register } from 'swiper/element/bundle';
 
-register();
-
-const Slide = ({ children }) => {
-  const swiperElRef = useRef(null);
+export function Swiper(props) {
+  const swiperRef = useRef(null);
+  const {
+    children,
+    ...rest
+  } = props;
 
   useEffect(() => {
-    // listen for Swiper events using addEventListener
-    swiperElRef.current.addEventListener('progress', (e) => {
-      const [swiper, progress] = e.detail;
-      console.log(progress);
-    });
+    // Register Swiper web component
+    register();
 
-    swiperElRef.current.addEventListener('slidechange', (e) => {
-      console.log('slide changed');
-    });
-  }, []);
+    // pass component props to parameters
+    const params = {
+      ...rest
+    };
+
+    // Assign it to swiper element
+    Object.assign(swiperRef.current, params);
+
+    // initialize swiper
+    swiperRef.current.initialize();
+  }, [rest]);
 
   return (
     <div className="slide">
       <div className="container">
-        <swiper-container
-          ref={swiperElRef}
-          slides-per-view="4"
-          navigation="true"
-          pagination="true"
-        >
-            {children}
+        <swiper-container init="false" ref={swiperRef} navigation="true" pagination="true">
+        {children}
         </swiper-container>
       </div>
     </div>
+    
   );
-};
+}
+export function SwiperSlide(props) {
+  const {
+    children,
+    ...rest
+  } = props;
 
-export default Slide;
+  return (
+    <swiper-slide {...rest}>
+      {children}
+    </swiper-slide>    
+  );
+}
