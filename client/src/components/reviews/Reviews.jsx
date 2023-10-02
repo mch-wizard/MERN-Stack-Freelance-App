@@ -5,7 +5,7 @@ import Review from "../review/Review";
 import "./Reviews.scss";
 const Reviews = ({ gigId }) => {
 
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
   const { isLoading, error, data } = useQuery({
     queryKey: ["reviews"],
     queryFn: () =>
