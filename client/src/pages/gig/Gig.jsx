@@ -4,7 +4,7 @@ import "./Gig.scss";
 import { register } from 'swiper/element/bundle';
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Reviews from "../../components/reviews/Reviews"
 import { Swiper, SwiperSlide } from "../../components/slide/Slide";
 
@@ -73,15 +73,15 @@ const Gig = () => {
                 )}
               </div>
             )}
-              <Swiper
-                className="slider"
-                slidesPerView={1}
-                breakpoints={{ 768: { slidesPerView: 1 } }}
-                on={{
-                  slideChange: () => console.log('slide changed'),
-                  progress: (s, progress) => console.log(`progress is ${progress}`),
-                }}
-              >
+            <Swiper
+              className="slider"
+              slidesPerView={1}
+              breakpoints={{ 768: { slidesPerView: 1 } }}
+              on={{
+                slideChange: () => console.log('slide changed'),
+                progress: (s, progress) => console.log(`progress is ${progress}`),
+              }}
+            >
               {data.images.map((img) => (
                 <SwiperSlide key={img}>
                   <img key={img} src={img} alt="" />
@@ -170,13 +170,16 @@ const Gig = () => {
                   <span>{feature}</span>
                 </div>
               ))}
-              </div>
+            </div>
+            <Link to={`/pay/${id}`}>
               <button>Continue</button>
+            </Link>
+              
           </div>
         </div>
       )}
     </div>
   );
-}
+};
 
 export default Gig;
