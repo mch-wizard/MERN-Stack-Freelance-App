@@ -13,10 +13,13 @@ import Messages from "./pages/messages/Messages";
 import Message from "./pages/message/Message";
 import MyGigs from "./pages/myGigs/MyGigs";
 import { QueryClient, QueryClientProvider, } from "@tanstack/react-query";
+import Success from './pages/success/Success';
+import Pay from './pages/pay/pay';
 
-const queryClient = new QueryClient();
 
 const App = () => {
+  const queryClient = new QueryClient();
+
   const Layout = () => {
     return (
       <div className="app">
@@ -66,19 +69,27 @@ const App = () => {
           path: "/gig/:id",
           element: <Gig />,
         },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/pay/:id",
+          element: <Pay />,
+        },
+        {
+          path: "/success",
+          element: <Success />,
+        },
       ],
-    },
-    {
-      path: "/register",
-      element: <Register />,
-    },
-    {
-      path: "/login",
-      element: <Login />,
     },
   ]);
 
   return <RouterProvider router={router} />;
-}
+};
 
 export default App;
